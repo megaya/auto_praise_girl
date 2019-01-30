@@ -1,24 +1,91 @@
 <template>
   <div id="app">
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">女の子がひたすら褒めてくれるだけのサイト</a>
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <p class="description">
+          ボタンを押すと自動で女の子がただただ褒めてくれます。音声の大きさに気をつけてください。<br />
+          ついでにニコニコ動画みたいに画面にメッセージも流れます。<br />
+          <br />
+          会社や学校などで疲れをぜひ癒やしてください。
+        </p>
+
+        <p>
+          <social-sharing url="https://xxxxxxxxxxxxx.megaya.net"
+            title="女の子がひたすら褒めてくれるだけのサイト"
+            description="女の子がひたすらほめてくれます。ただそれだけの幸福。"
+            inline-template>
+
+            <div>
+              <button type="button" class="btn btn-social btn-tw">
+                <network network="twitter">
+                  <font-awesome-icon :icon="['fab', 'twitter']" size="lg"></font-awesome-icon> ツイート　
+                </network>
+              </button>
+              <button type="button" class="btn btn-social btn-fb">
+                <network network="facebook">
+                  <font-awesome-icon :icon="['fab', 'facebook']" size="lg"></font-awesome-icon> Facebookでシェア
+                </network>
+              </button>
+            </div>
+          </social-sharing>
+        </p>
+      </div>
+    </div>
+
+		<div class="row buttons">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <button type="button" class="btn btn-secondary btn-lg btn-block" :disabled="!isActive" @click="stop">ストップ</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="animateCharacter()">1回だけもらう</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="start(3000, 1000)">ゆっくりのペースで褒めてもらう</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="start(1500, 700)">そこそこのペースで褒めてもらう</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="start(1000, 500)">心地いいペースで褒めてもらう</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="start(500, 100)">ものすごく褒めてもらう</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-warning" :disabled="isActive" @click="start(100, 10)">過剰に褒めてもらう(※ 危険)</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-danger" :disabled="isActive" @click="start(10, 1)">褒め地獄 (※ 超危険)</button>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>おまけ</h3>
+        <p>カメラを起動すると自分が画面に映るのでニコニコ動画っぽい気分を雑に味わえます</p>
+        <button type="button" class="btn btn-primary" @click="initCamera">カメラを起動する</button>
+      </div>
+      <div class="card-body text-center">
+      </div>
+
+      <video id="camera" autoplay></video>
+    </div>
+
     <ul id="character-container">
     </ul>
 
-    <button type="button" class="btn btn-social btn-tw" :disabled="!isActive" @click="stop">ストップ</button>
-    <button type="button" class="btn btn-social btn-tw" :disabled="isActive" @click="animateCharacter()">1回だけ応援してもらう</button>
-    <button type="button" class="btn btn-social btn-tw" :disabled="isActive" @click="start(3000, 1000)">少しだけ応援してもらう</button>
-    <button type="button" class="btn btn-social btn-tw" :disabled="isActive" @click="start(2000, 1000)">そこそこ応援してもらう</button>
-    <button type="button" class="btn btn-social btn-tw" :disabled="isActive" @click="start(1000, 500)">心地いいペースで応援してもらう</button>
-    <button type="button" class="btn btn-social btn-tw" :disabled="isActive" @click="start(500, 100)">ものすごく応援してもらう</button>
-    <button type="button" class="btn btn-social btn-tw" :disabled="isActive" @click="start(100, 10)">過剰に応援してもらう</button>
-    <button type="button" class="btn btn-social btn-tw" :disabled="isActive" @click="start(10, 1)">応援地獄 (※ 音量注意)</button>
+    <div class="container">
+      <ul class="list-group list-group-flush etc-description">
+        <li class="list-group-item">作った人：<a href="https://twitter.com/megaya0403" target="_blank">megaya</a></li>
+        <li class="list-group-item">お借りした音声：</li>
+        <li class="list-group-item"><a href="https://soundeffect-lab.info/" target="_blank">効果音ラボ</a></li>
+        <li class="list-group-item"><a href="https://hinanogimaya.com/" target="_blank">女性声優・雛乃木まや公式サイト</a></li>
+        <li class="list-group-item"><a href="https://soalunashosya.jimdo.com/" target="_blank">ボイス素材屋～すぱらんど</a></li>
+      </ul>
 
-    <button @click="initCamera">カメラを起動する</button>
-    <video id="camera" autoplay></video>
+      <footer class="text-center copy-light">
+        © 2019 megaya All rights rserved
+      </footer>
+    </div>
   </div>
 </template>
 
 <script>
 import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'App',
@@ -107,7 +174,6 @@ export default {
       ele.style.width      = '700px';
       ele.style.top        = Math.floor( Math.random() * $(window).height()) + 'px'; // ランダムに高さを取得
       ele.setAttribute("id", "character-" + this.characterCount);
-      ele.style.fontSize   = '40px';
       //ele.style.textShadow = '0 0 5px #111'
       //ele.style.color      = color;
       return ele;
@@ -144,4 +210,37 @@ export default {
 #camera {
   width: 100%;
 }
+
+.jumbotron {
+  margin-top: 50px;
+}
+
+#character-container {
+  font-size: 2em;
+}
+
+.buttons {
+  margin-bottom: 20px;
+  z-index: 100;
+}
+
+.buttons button {
+  margin-bottom: 15px;
+}
+
+
+/* SNSボタン */
+.btn-social {
+  width: 250px;
+  color: white;
+}
+/* Facebook */
+.btn-fb {
+  background-color: #3B5998;
+}
+/* Twitter */
+.btn-tw {
+  background-color: #00aced;
+}
+
 </style>
