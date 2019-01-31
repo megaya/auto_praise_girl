@@ -14,7 +14,7 @@
         </p>
 
         <p>
-          <social-sharing url="https://productions.megaya.net/praise_girl"
+          <social-sharing url="https://productions.megaya.net/gallery/praise_girl"
             title="女の子がひたすら褒めてくれるだけのサイト"
             description="女の子がひたすらほめてくれます。ただそれだけの幸福。"
             inline-template>
