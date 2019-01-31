@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="#">女の子がひたすら褒めてくれるだけのサイト</a>
     </nav>
