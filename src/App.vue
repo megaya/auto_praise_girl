@@ -10,10 +10,6 @@
     <div class="container">
       <div class="jumbotron">
 
-        <div class="text-center demo-image">
-          <img src="./assets/demo.gif" class="d-inline-block align-top" alt="">
-        </div>
-
         <p class="description">
           ボタンを押すと自動で女の子がただただ褒めてくれます。音声の大きさに気をつけてください。<br />
           <br />
