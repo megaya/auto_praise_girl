@@ -1,14 +1,21 @@
 <template>
   <div>
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">女の子がひたすら褒めてくれるだけのサイト</a>
+       <a class="navbar-brand" href="#">
+         <img src="./assets/top.png" width="40" class="d-inline-block align-top" alt="">
+         女の子がひたすら褒めてくれるだけのサイト
+       </a>
     </nav>
 
     <div class="container">
       <div class="jumbotron">
+
+        <div class="text-center demo-image">
+          <img src="./assets/demo.gif" class="d-inline-block align-top" alt="">
+        </div>
+
         <p class="description">
           ボタンを押すと自動で女の子がただただ褒めてくれます。音声の大きさに気をつけてください。<br />
-          ついでにニコニコ動画みたいに画面にメッセージも流れます。<br />
           <br />
           会社や学校などで疲れをぜひ癒やしてください。
         </p>
@@ -40,7 +47,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <button type="button" class="btn btn-secondary btn-lg btn-block" :disabled="!isActive" @click="stop">ストップ</button>
-        <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="animateCharacter()">1回だけもらう</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="animateCharacter()">1回だけ褒めてもらう</button>
         <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="start(3000, 1000)">ゆっくりのペースで褒めてもらう</button>
         <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="start(1500, 700)">そこそこのペースで褒めてもらう</button>
         <button type="button" class="btn btn-lg btn-block btn-outline-info" :disabled="isActive" @click="start(1000, 500)">心地いいペースで褒めてもらう</button>
@@ -209,6 +216,10 @@ export default {
 <style>
 #camera {
   width: 100%;
+}
+
+.demo-image {
+  margin-bottom: 30px;
 }
 
 .jumbotron {
